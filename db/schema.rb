@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_035425) do
     t.integer "genre_id", null: false
     t.string "item_name", null: false
     t.string "introduction", null: false
-    t.string "no_tax_item_price", null: false
+    t.integer "no_tax_item_price", null: false
     t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
