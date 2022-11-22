@@ -1,0 +1,12 @@
+<h1>商品新規登録</h1>
+<%= form_with model: @item,url: admin_items_path,local:true do |f| %>
+    <p>商品画像<%= f.file_field :item_image, accept: "item_image/*" %></p>
+    <p>商品名<%= f.text_field :item_name %></p>
+    <p>商品説明<%= f.text_area :introduction %></p>
+    <p>税抜価<%= f.text_field :no_tax_item_price %>円</p>
+    <p>ジャンル名</p>
+        <%= f.select :genre_id, @genres.map { 
+        |g| [g.genre_name, g.id]},class: "form-control" %><br>
+        <%= link_to "ジャンル一覧", admin_genres_path %> <br>
+        <%= f.submit '追加', class: 'btn btn-success btn-md' %>
+<% end %>

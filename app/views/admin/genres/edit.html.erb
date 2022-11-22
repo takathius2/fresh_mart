@@ -1,0 +1,8 @@
+<h1>商品ジャンル編集画面</h1>
+
+<%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
+    <h3>ジャンル名</h3>
+    <%= f.text_field :genre_name %>
+    <%= f.submit '決定', class: 'btn btn-primary btn-md' %>
+<% end %>
+<!--部分テンプレート化出来そうかもしれない-->

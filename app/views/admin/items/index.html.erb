@@ -1,0 +1,14 @@
+<h1>商品一覧</h1>
+
+<div><%= link_to "+",  new_admin_item_path %></div>
+<% @items.each do |item| %>
+    <div>
+        <%= link_to admin_item_path(item.id) do %>
+            <%= image_tag item.get_item_image(100,100) %></p>
+            <p>商品名:<%= item.item_name %></p>
+        <% end %>
+    <p>ジャンル名:<%= item.genre.genre_name %></p>
+    </div>
+<% end %>
+<%= link_to "戻る", admin_root_path %>
+<%= paginate @items %>

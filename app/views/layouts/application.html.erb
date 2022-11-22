@@ -1,16 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>FreshMart</title>
+    <meta charset="utf-8">
+    
+  <!-- 郵便番号から住所自動入力用 -->
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+    
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+   <!-- Bootstrapレスポンシブ用メタタグ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Bootstrap　CSS-->
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    
+    <!-- 追加font-->
+    <style>@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');</style>
+    
+    <title>FreshMart</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a href="">
+            <%= link_to image_tag('logo.jpg', size: '150'), '/' %>
+          </a>
+          <font size="7" color="darkorange" face="Francois One" >FreshMart</font>
+          <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              </li>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "商品一覧", admin_items_path, method: :get %>
+              </li>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "会員一覧", admin_customers_path, method: :get %>
+              </li>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "注文履歴一覧", admin_root_path, method: :get %>
+              </li>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "ジャンル一覧", admin_genres_path, method: :get %>
+              </li>
+              <!--<li class="nav-item btn btn-sm">-->
+              <!--  <%#= button_to "カテゴリー一覧" %>-->
+              <!--</li>-->
+            <% elsif customer_signed_in? %>
+              <p>ようこそ<strong><%#= current_customer.first_name %></strong></p>
+              <li class="nav-item btn btn-sm">
+                <%= %>
+              </li>
+            <% else %>
+            
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>
