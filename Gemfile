@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+ gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -62,3 +62,7 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 gem 'enum_help'
+# 都道府県コードから都道府県名を変換する
+gem 'jp_prefecture' 
+# RailsでjQueryを使えるようにする
+gem 'jquery-rails' 
