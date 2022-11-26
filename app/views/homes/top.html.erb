@@ -1,2 +1,21 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<font size="6" color="#ff6347" face="Francois One" >★当店おすすめの品★</font>
+<div class="container">
+    <h4>新着商品</h4>
+    <div class="row">
+        <% @item.each do |item| %>
+        <div class="col-4">
+            <%= link_to public_item_path(item.id) do %>
+                <%= image_tag item.get_item_image(200,300) %>
+            <% end %>
+            <table>
+                <tr>
+                    <th>商品名</th><td><%= item.item_name %></td>
+                </tr>
+                <tr>
+                    <th>税抜価格</th><td><strong><%= item.no_tax_item_price %></strong>円 (税込<%= item.with_tax_price %>円）</td>
+                </tr>
+            </table>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -44,6 +44,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'pry-byebug'
+  gem 'rubocop', '~> 1.39', require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -66,3 +72,6 @@ gem 'enum_help'
 gem 'jp_prefecture' 
 # RailsでjQueryを使えるようにする
 gem 'jquery-rails' 
+
+gem 'carrierwave'
+gem 'rmagick'
