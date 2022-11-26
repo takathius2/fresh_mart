@@ -58,7 +58,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up for inactive accounts.
    def after_update_sign_up_path_for(resource)
-       public_customers_mypage_path
+       '/'
    end
    
 #   def create
