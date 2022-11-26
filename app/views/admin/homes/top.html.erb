@@ -7,9 +7,12 @@
         <th>受注日</th>
         <td>
             <%= link_to admin_order_path(order.id) do %>
-            <%= order.created_at.strftime('%Y/%m/%d/%b') %>
+                <%= order.created_at.strftime('%Y/%m/%d/%b') %>
+            <% end %>
         </td>
     </tr>
     <tr><th>購入者</th><td><%= @customer.full_name %></td></tr>
-    <tr><th>注文個数</th><%= order.order_details.sum(:amount) %></tr>
+    <tr><th>注文個数</th><td><%= order.order_details.sum(:amount) %></td></tr>
+    <% end %>
 </table>
+<%= paginate @orders %>
