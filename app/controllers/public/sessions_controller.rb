@@ -36,10 +36,10 @@ class Public::SessionsController < Devise::SessionsController
     #処理1：入力されたメールアドレスからアカウントを1件取得する
     @customer = Customer.find_by(email: params[:customer][:email])
     #処理2_1：アカウント取得失敗したらこのメソッドは終了
-    return_if !@customer
+    return if !@customer
     
     #処理2_2:取得したアカウントのパスワードと入力されたパスワードが一致するか比べる
-    if @customer.vaild_password?(params[:customer][:password]) && @customer.is_deleted
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
       flash[:error] = "退会済みです。引き続き買い物を行うにはお手数ですが
       別のメールアドレスで新規会員登録を行ってください。"
       redirect_to new_customer_registration_path

@@ -1,2 +1,15 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h1>管理者トップページ</h1>
+
+<h3>注文履歴一覧</h3>
+<table>
+    <% @orders.each do |order| %>
+    <tr>
+        <th>受注日</th>
+        <td>
+            <%= link_to admin_order_path(order.id) do %>
+            <%= order.created_at.strftime('%Y/%m/%d/%b') %>
+        </td>
+    </tr>
+    <tr><th>購入者</th><td><%= @customer.full_name %></td></tr>
+    <tr><th>注文個数</th><%= order.order_details.sum(:amount) %></tr>
+</table>
