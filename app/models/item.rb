@@ -7,6 +7,9 @@ class Item < ApplicationRecord
     #商品画像用のコード
     has_one_attached :item_image
     
+    #CarrierWaveのアップローダーと紐付け
+    mount_uploader :image, ImageUploader
+   
      #消費税を求めるメソッド（10％
     def with_tax_price
         (no_tax_item_price*1.1).floor
