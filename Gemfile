@@ -72,6 +72,5 @@ gem 'enum_help'
 gem 'jp_prefecture' 
 # RailsでjQueryを使えるようにする
 gem 'jquery-rails' 
-
-gem 'carrierwave'
-gem 'rmagick'
+gem 'carrierwave', '~> 2.0'
+gem "mini_magick"
