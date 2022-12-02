@@ -4,10 +4,17 @@
         <%= f.file_field :item_image, placeholder:"商品画像", accept:"item_image/*" %><br>
         
     <label for="inputName">商品名</label>
-        <%= f.text_field :item_name, autofocus: true, id:"inputItem_name", placeholder:"商品名" %><br>
+        <%= f.text_field :item_name, autofocus: true, id: "inputItem_name", placeholder: "商品名" %><br>
         
     <label for="inputIntroduction">商品説明</label>
         <%= f.text_area :introduction, id: "inputIntroduction" %><br>
+    
+    
+    <label for="inputContent_volume">内容量</label>
+        <%= f.text_field :content_volume, outfocus: true, id: "inputContent_volume" %><br>
+        
+    <label for="inputUnit">単位</label>
+        <%= f.text_field :unit, outfocus: true, id: "inputUnit", placeholder: "1パック/1袋/1箱" %><br>
         
     <label for="inputGenre">ジャンル名</label>
         <%= f.select :genre_id, @genres.map { |g|

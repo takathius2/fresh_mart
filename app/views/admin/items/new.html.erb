@@ -9,4 +9,6 @@
         |g| [g.genre_name, g.id]},class: "form-control" %><br>
         <%= link_to "ジャンル一覧", admin_genres_path %> <br>
         <%= f.submit '追加', class: 'btn btn-success btn-md' %>
+    <p>内容量<%= f.text_field :content_volume %></p>
+    <p>単位<%= f.text_field :unit %></p>
 <% end %>
