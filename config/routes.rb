@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   }
   
   root to: 'homes#top', as: 'top'
+  get "homes/about" => "homes#about", as: "about"
   namespace :public do
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     post 'customers/comfirm' => 'orders#comfirm'
