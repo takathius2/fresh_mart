@@ -15,14 +15,14 @@
           <tr>
             <th>名前</th>
             <td>
-              <%= f.label :first_name, "(姓)" %> <%= f.text_field :first_name, autofocus: true, :placeholder =>"難波" %>
+              <%= f.label :first_name, "(姓)" %> <%= f.text_field :first_name, autofocus: true, :placeholder =>"山田" %>
               <%= f.label :last_name, "(名)" %> <%= f.text_field :last_name, :placeholder =>"太郎" %>
             </td>
           </tr>
           <tr>
             <th>フリガナ</th>
             <td>
-              <%= f.label :first_name_kana, "(セイ)" %> <%= f.text_field :first_name_kana, :placeholder =>"ナンバ" %>
+              <%= f.label :first_name_kana, "(セイ)" %> <%= f.text_field :first_name_kana, :placeholder =>"ヤマダ" %>
               <%= f.label :last_name_kana, "(メイ)" %><%= f.text_field :last_name_kana, :placeholder =>"タロウ" %>
             </td>
           </tr>
@@ -31,7 +31,7 @@
             <td colspan="2"><%= f.email_field :email, autocomplete: "email" %></td>
           </tr>
           <tr>
-            <th><%= f.label :postal_code, "郵便番号(ハイフンなし7桁)" %></th>
+            <th><%= f.label :postal_code, "郵便番号(ハイフンなし7桁・半角)" %></th>
             <td colspan="2">
               <!--<input type="text" name="postal_code" size="10" maxlength="7" onKeyUp="AjaxZip3.zip2addr('zip', '', 'address', 'address');">-->
               <%#= f.hidden_field :postal_code, :value => customer.postal_code %>
@@ -39,14 +39,14 @@
             </td>
           </tr>
           <tr>
-            <th><%= f.label :address, "住所(郵便番号から自動入力)" %></th>
+            <th><%= f.label :address, "住所" %></th>
             <td colspan="2">
               <%= f.text_field :address, class: "jpostal_address" %>
             </td>
               <!--<input type="text" name="address" size="60">-->
           </tr>
           <tr>
-            <th><%= f.label :telephone_number, "電話番号(ハイフンなし10or11桁)" %></th>
+            <th><%= f.label :telephone_number, "電話番号(ハイフンなし10or11桁・半角)" %></th>
             <td colspan="2"><%= f.text_field :telephone_number, :placeholder =>"00011112222" %></td>
           </tr>
           <tr>
