@@ -1,2 +1,43 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h1>ショッピングカート</h1>
+    <%= button_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "本当に空にしますか？" %><br>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>商品名</th>
+                <th>単価(税込)</th>
+                <th>数量</th>
+                <th></th>
+                <th>小計</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @cart_items.each do |cart_item| %>
+                <tr>
+                    <td><%= image_tag cart_item.item.get_item_image(100,100) %></td>
+                    <td><%= cart_item.item.name %></td>
+                    <td><%= cart_item.item.with_tax_price %>円</td>
+                    <td><%= cart_item.amount %>個</td>
+                    <td>
+                        <%= form_with model: @cart_items, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+                            <%= f.hidden_field :@cart_item, :value => cart_item.amount %>
+                            <%= f.select :amount, *[1..10] %>
+                        <%= f.submit "変更" %>
+                        <% end %>
+                    </td>
+                    <td><%= cart_item.subtotal %>円</td>
+                    <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                </tr>
+                <% @total += cart_item.subtotal %>
+            <% end %>
+        </tbody>
+    </table>
+    <p>合計金額（税込）<%= @total %>円</p>
+    <%= link_to "買い物を続ける", root_path %><br>
+    <% if @total == 0 %>
+    <% else %>
+        <%= link_to "会計する", new_order_path %>
+    <% end %>
+</div>
