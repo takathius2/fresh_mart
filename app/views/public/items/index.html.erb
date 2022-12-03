@@ -1,2 +1,17 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<p><strong>商品一覧</strong>（全<%= @items.count %>件）</p>
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <% @items.each do |item| %>
+                <div>
+                    <%= link_to public_item_path(item.id) do %>
+                        <%= image_tag item.get_item_image(200,300) %></p>
+                        <p>商品名:<%= item.item_name %></p>
+                    <% end %>
+                    <p>ジャンル名:<%= item.genre.genre_name %></p>
+                    <p>価格（税抜）<%= item.no_tax_item_price %>円</p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
