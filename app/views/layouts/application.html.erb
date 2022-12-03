@@ -69,10 +69,13 @@
               <li class="nav-item btn btn-sm">
                 <%= button_to "ログアウト", destroy_customer_session_path, method: :delete %>
               </li>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "Aboute", about_path, method: :get %>
+              </li>
             <% else %>
-              <!--<li class="nav-item btn btn-sm">-->
-              <!--<%#= button_to "Aboute", about_path, method: :get %>-->
-              <!--</li>-->
+              <li class="nav-item btn btn-sm">
+                <%= button_to "Aboute", about_path, method: :get %>
+              </li>
               <li class="nav-item btn btn-sm">
                 <%= button_to "商品一覧", public_items_path, method: :get %>
               </li>
