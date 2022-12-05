@@ -1,2 +1,5 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<div class ="my_address">
+    <h3>自分の住所へ配送</h3>
+    <%= render 'public/customers/address' %>
+</div>
+<%= link_to "編集する", edit_public_address_path(current_customer.id) %></p>
