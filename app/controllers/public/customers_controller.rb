@@ -6,7 +6,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     @customer.update!(customer_params)
-    redirect_to public_customers_my_page_path
+    redirect_to public_my_page_path
   end
 
   def edit

@@ -1,0 +1,14 @@
+<h3>本当に退会しますか？</h3>
+<p>退会すると、会員情報や<br>これまでの購入履歴が閲覧できなくなります。<br>
+退会する場合は、「退会する」をクリックしてください。</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <%= button_to "退会しない", public_customers_infomation_edit_path, method: :get, class: 'btn btn-primary btn-sm' %>
+        </div>
+        <div class="col-2">
+            <%= button_to "退会する", public_customers_withdraw_path, method: :patch, class: 'btn btn-danger btn-sm', data: { confirm: '本当に退会しますか？' } %>
+        </div>
+    </div>
+</div>

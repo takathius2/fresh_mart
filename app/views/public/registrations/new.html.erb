@@ -51,7 +51,9 @@
           </tr>
           <tr>
             <th><%= f.label :password, "パスワード(#{@minimum_password_length}文字以上)" %></th>
-            <td colspan="2"><%= f.password_field :password, autocomplete: "new-password" %></td>
+            <td colspan="2"><%= f.password_field :password, autocomplete: "new-password" %><br>
+              <p>※あとから変更できません。ご注意ください。</p>
+            </td>
           </tr>
           <tr>
             <th><%= f.label :password_confirmation, "パスワード(確認用)" %></th>
