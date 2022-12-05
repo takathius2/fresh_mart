@@ -36,9 +36,9 @@
   </div>
   
   <div class="field">
+    
     <%= f.label :is_deleted,"会員ステータス" %>
-    <%= f.radio_button :is_deleted, false %><%= f.label @customer.is_deleted, '有効' %>
-    <%= f.radio_button :is_deleted, true %><%= f.label @customer.is_deleted, '退会' %>
+    <%= f.radio_button :is_deleted, false %><%= f.label @customer.is_deleted, '有効' %><%= f.radio_button :is_deleted, true %><%= f.label @customer.is_deleted, '退会' %>
   </div>
   
     <%= f.submit "変更を保存", class: 'btn btn-success btn-md' %>
