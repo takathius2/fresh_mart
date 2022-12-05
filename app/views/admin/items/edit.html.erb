@@ -14,7 +14,7 @@
         <%= f.text_field :content_volume, outfocus: true, id: "inputContent_volume" %><br>
         
     <label for="inputUnit">単位</label>
-        <%= f.text_field :unit, outfocus: true, id: "inputUnit", placeholder: "1パック/1袋/1箱" %><br>
+        <%= f.text_field :unit, outfocus: true, id: "inputUnit", placeholder: "パック/袋/箱　など" %><br>
         
     <label for="inputGenre">ジャンル名</label>
         <%= f.select :genre_id, @genres.map { |g|

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root to: 'homes#top', as: 'top'
   get "homes/about" => "homes#about", as: "about"
   namespace :public do
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     post 'customers/comfirm' => 'orders#comfirm'
     get 'customers/complete' => 'orders#complete', as: 'complete'
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :create, :index, :show]
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :create]
-    delete 'cart_items/destroy_all' => 'customers#destroy_all'
   end
   
   namespace :admin do

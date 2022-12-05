@@ -20,7 +20,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.customer = current_customer
       p @cart_item
       @cart_item.save
-      redirect_to cart_items_path
+      redirect_to public_cart_items_path
     else
       redirect_to new_customer_session_path
     end
@@ -30,19 +30,20 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @item = Item.all
     @cart_item.update(cart_item_params)
-    redirect_to cart_items_path
+    redirect_to public_cart_items_path
+  end
+  
+  def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to public_cart_items_path
   end
   
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy!
-    redirect_to cart_items_path
+    redirect_to public_cart_items_path
   end
   
-  def destroy_all
-    current_customer.cart_items.destroy_all
-    redirect_to cart_items_path
-  end
   
   private
   def cart_item_params

@@ -1,5 +1,4 @@
 <h1>ショッピングカート</h1>
-    <%= button_to "カートを空にする",public_cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %><br>
 <div>
     <table>
         <thead>
@@ -17,27 +16,29 @@
             <% @cart_items.each do |cart_item| %>
                 <tr>
                     <td><%= image_tag cart_item.item.get_item_image(100,100) %></td>
-                    <td><%= cart_item.item.name %></td>
+                    <td><%= cart_item.item.item_name %></td>
                     <td><%= cart_item.item.with_tax_price %>円</td>
-                    <td><%= cart_item.amount %>個</td>
+                    <td><%= cart_item.amount %><%= cart_item.item.unit %></td>
                     <td>
-                        <%= form_with model: @cart_items, url: public_cart_item_path(public_cart_item.id), method: :patch do |f| %>
+                        <%= form_with model: @cart_items, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
                             <%= f.hidden_field :@cart_item, :value => cart_item.amount %>
                             <%= f.select :amount, *[1..10] %>
                         <%= f.submit "変更" %>
                         <% end %>
                     </td>
                     <td><%= cart_item.subtotal %>円</td>
-                    <td><%= link_to "削除する", public_cart_item_path(public_cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                    <td><%= button_to "削除", public_cart_item_path(cart_item.id), method: :delete, class: 'btn btn-danger btn-sm', "data-confirm" => "本当に削除しますか？" %></td>
                 </tr>
                 <% @total += cart_item.subtotal %>
             <% end %>
         </tbody>
     </table>
     <p>合計金額（税込）<%= @total %>円</p>
-    <%= link_to "買い物を続ける", root_path %><br>
+    <%= link_to "買い物を続ける", '/', class: 'btn btn-primary btn-sm' %><br>
     <% if @total == 0 %>
     <% else %>
-        <%= link_to "会計する", new_public_order_path %>
+        <%= link_to "会計する", new_public_order_path, class: 'btn btn-success btn-sm' %>
     <% end %>
+    
+    <%= button_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
 </div>

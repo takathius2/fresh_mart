@@ -16,3 +16,10 @@
  font {
      font-family: 'Francois One', sans-serif;    
  }
+ 
+.about_main {
+  background-image: asset-url("FreshMart_About.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 300px;
+}
