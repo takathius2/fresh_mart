@@ -75,3 +75,5 @@ gem 'jquery-rails'
 
 gem 'carrierwave'
 gem 'rmagick'
+
+gem 'scss'

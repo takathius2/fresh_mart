@@ -1,7 +1,7 @@
 <div class="my_page">
     <h1>マイページ</h1>
     <p><strong>登録情報</strong><%= link_to "編集する", public_customers_infomation_edit_path %></p>
-    <%= render 'address' %>
+    <%= render 'public/addresses/address' %>
     
     <%= button_to "配送先一覧", public_addresses_path, method: :get, class: "btn btn-outline-secondary" %>
     <%= button_to "注文一覧", public_orders_path, method: :get, class: "btn btn-outline-secondary" %>

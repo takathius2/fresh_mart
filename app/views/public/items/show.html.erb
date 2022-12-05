@@ -9,7 +9,7 @@
             <th>商品ジャンル</th><td><%= @item.genre.genre_name %></td>
         </tr>
         <tr>
-            <th>内容量</th><td><%= @item.content_volume %> <%= @item.unit %></td>
+            <th>内容量/単位</th><td><%= @item.content_volume %>/ <%= @item.unit %></td>
         </tr>
         <tr>
             <th>商品説明</th><td><%= @item.introduction %></td>
@@ -18,7 +18,7 @@
     <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
             <p>数量を選択</p>
             <%= f.hidden_field :item_id, :value => @item.id %>
-            <%= f.select :amount, *[1..10] %>
+            <%= f.select :amount, *[1..10] %><%= @item.unit %>
             <%= f.submit "カートに入れる" %>
     <% end %>
 </div>
