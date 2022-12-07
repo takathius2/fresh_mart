@@ -4,7 +4,7 @@ class Order < ApplicationRecord
     belongs_to :customer
     
     validates :payment_method, presence: true
-    #validates :delivery_method, presence: true
+    validates :delivery_method, presence: true
     
     has_one_attached :item_image
     
@@ -20,4 +20,9 @@ class Order < ApplicationRecord
     #0ならクレジット払い、1なら銀行振込
     enum payment_method: { credit_card: 0, transfer: 1 }
     
+    # 0なら顧客自身の住所、1なら既存の登録された配送先住所、２なら新規に配送先を登録した住所
+    enum delivery_method: { my_address: 0, existing_delivery_address: 1, new_shipping_address: 2 }
+    
+    # 0なら入金待ち、１なら入金確認、２なら発送準備中、３なら発送完了
+    enum order_status: { awaiting_payment: 0, payment_confirmation: 1, preparing_to_ship: 2, dispatched_completed: 3}
 end

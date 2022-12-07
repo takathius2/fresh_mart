@@ -16,17 +16,24 @@ Rails.application.routes.draw do
   root to: 'homes#top', as: 'top'
   get "homes/about" => "homes#about", as: "about"
   namespace :public do
+    # 顧客情報関連
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     get 'customers/my_page' => 'customers#show', as: 'my_page'
-    post 'customers/comfirm' => 'orders#comfirm'
-    get 'customers/complete' => 'orders#complete', as: 'complete'
     get 'customers/infomation/edit' => 'customers#edit'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/infomation/update' => 'customers#update'
     patch 'customers/withdraw' => 'customers#withdraw'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
-    resources :categories, only:[:index]
-    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    
+    # 注文関連
+    post 'orders/comfirm' => 'orders#comfirm'
+    get 'orders/complete' => 'orders#complete', as: 'complete'
     resources :orders, only:[:new, :create, :index, :show]
+    
+    # カテゴリー関連
+    resources :categories, only:[:index]
+    
+    # 配送先
+    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :create]
   end

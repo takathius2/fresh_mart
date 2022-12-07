@@ -1,2 +1,34 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div>
+<h1>支払い方法</h1>
+<%= form_with model: @order, url: public_orders_comfirm_path, method: :post do |f| %>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+    
+    
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+    
+<h2>お届け先</h2>
+<!--自分の住所-->
+    <%= f.radio_button :delivery_method, Order.delivery_methods.key(0) %>
+        <%= f.label :delivery_method, Order.delivery_methods_i18n[:my_address] %><br>
+        <%= current_customer.postal_code %><br><%= current_customer.address %><br>
+
+<!--既存住所から選択-->
+    <%= f.radio_button :delivery_method, Order.delivery_methods.key(1) %>
+        <%= f.label :delivery_method, Order.delivery_methods_i18n[:existing_delivery_address] %><br>
+        <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+    
+<!--新しい配送先を作成する-->
+    <%= f.radio_button :delivery_method, Order.delivery_methods.key(2) %>
+        <%= f.label :delivery_method, Order.delivery_methods_i18n[:new_shipping_address] %><br>
+    
+        <h4>新しい配送先を指定してください</h4>
+        <p>宛名<%= f.text_field :delivery_name %></p>
+        <p>※ハイフン無し7桁</p>
+        <p>〒<%= f.text_field :delivery_code %></p>
+        <p>住所<%= f.text_area :delivery_address %></p><br>
+    
+    <%= f.submit '確認画面へ進む' %>
+<% end %>
+</div>
