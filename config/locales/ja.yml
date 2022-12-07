@@ -1,0 +1,21 @@
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+      delivery_method:
+        my_address: "ご自身の住所"
+        existing_delivery_address: "登録済みの住所"
+        new_shipping_address: "配送先を新規登録"
+      order_status:
+        awaiting_payment: "入金待ち"
+        payment_confirmation: "入金確認"
+        preparing_to_ship: "発送準備中"
+        dispatched_completed: "発送完了"
+    order_detail:
+      puroduct_status:
+        awaiting_delivery_of_goods: "商品入荷待ち"
+        in_preparation: "準備中"
+        goods_ready: "準備完了"
+        

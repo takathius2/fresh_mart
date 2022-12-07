@@ -1,5 +1,9 @@
-<div class ="my_address">
+<div class="address1">
     <h3>自分の住所へ配送</h3>
     <%= render 'address' %>
 </div>
 <%= link_to "編集する", edit_public_address_path(current_customer.id) %></p>
+
+<div class="address2">
+    <h3>登録済み住所</h3>
+</div>
