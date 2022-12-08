@@ -1,17 +1,22 @@
 <h2>配送先の登録</h2>
 
-<div class="text-danger">
-    <%= flash[:alart] %>
-</div>
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
-<div class="postal_new" >
+<div class="postal_new">
     <%= form_with model: @address, url: public_addresses_path, method: :post do |f| %>
         <table>
             <tr>
                 <th>宛名</th>
                 <td>
                     <%= f.label :postal_name, "氏名" %> <%= f.text_field :postal_name, :placeholder => "宛名太郎" %>
-                    <%= f.label :postal_name_kana, "フリガナ" %> <%= f.text_field :postal_name_kana, :placeholder =>"ｱﾃﾅﾀﾛｳ" %>
+                    <%= f.label :postal_name_kana, "フリガナﾅ" %> <%= f.text_field :postal_name_kana, :placeholder =>"ｱﾃﾅﾀﾛｳ" %>
                 </td>
             </tr>
             <tr>

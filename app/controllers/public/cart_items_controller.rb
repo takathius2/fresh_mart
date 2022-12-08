@@ -19,7 +19,7 @@ class Public::CartItemsController < ApplicationController
     #ログインcustomerのみ更新できるようにするため分岐の外に記述する
     if @cart_item.customer = current_customer
       p @cart_item
-      @cart_item.save
+      @cart_item.save!
       redirect_to public_cart_items_path
     else
       redirect_to new_customer_session_path
@@ -30,17 +30,20 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @item = Item.all
     @cart_item.update(cart_item_params)
+    flash[:notice] = "カートに１件商品を追加しました。"
     redirect_to public_cart_items_path
   end
   
   def destroy_all
     current_customer.cart_items.destroy_all
+    flash[:notice] = "カート内を空にしました。"
     redirect_to public_cart_items_path
   end
   
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy!
+    flash[:notice] = "商品を一軒削除しました。"
     redirect_to public_cart_items_path
   end
   
