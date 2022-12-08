@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :categories, only:[:index]
     
     # 配送先
-    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
+    resources :addresses, only:[:index, :edit, :new, :create, :update, :destroy]
     resources :items, only:[:index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :create]
   end

@@ -1,0 +1,42 @@
+<h2>配送先の登録</h2>
+
+<div class="text-danger">
+    <%= flash[:alart] %>
+</div>
+
+<div class="postal_new" >
+    <%= form_with model: @address, url: public_addresses_path, method: :post do |f| %>
+        <table>
+            <tr>
+                <th>宛名</th>
+                <td>
+                    <%= f.label :postal_name, "氏名" %> <%= f.text_field :postal_name, :placeholder => "宛名太郎" %>
+                    <%= f.label :postal_name_kana, "フリガナ" %> <%= f.text_field :postal_name_kana, :placeholder =>"ｱﾃﾅﾀﾛｳ" %>
+                </td>
+            </tr>
+            <tr>
+                <th>郵便番号(ハイフンなし７桁・半角)</th>
+                <td colspan="2">
+                     <%= f.text_field :postal_code, :placeholder =>"5420076", class: "jpostal_code" %>
+                </td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td>
+                    <%= f.text_field :postal_address, :placeholder =>"東京都", class: "jpostal_address" %>
+                </td>
+            </tr>
+            <tr>
+                <th><%= f.label :postal_telephone_number, "電話番号(ハイフンなし10or11桁・半角)" %></th>
+                <td>
+                    <%= f.text_field :postal_telephone_number, :placeholder =>"00011112222" %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <%= f.submit "新規登録する", class: "btn btn-success" %>
+                </td>
+            </tr>
+        </table>
+    <% end %>
+</div>
