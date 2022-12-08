@@ -1,4 +1,39 @@
-<p>配送先編集画面<br>
-※1.登録済み住所の編集機能は現在実装を見送っています<br>
-※2.お客様自身の住所は　マイページの登録情報編集＞<%= link_to  "アカウントの情報編集", public_customers_infomation_edit_path %><br>
-から編集可能です</p>
+<!--<p>配送先編集画面<br>-->
+<!--※1.登録済み住所の編集機能は現在実装を見送っています<br>-->
+<!--※2.お客様自身の住所は　マイページの登録情報編集＞<%#= link_to  "アカウントの情報編集", public_customers_infomation_edit_path %><br>-->
+<!--から編集可能です</p>-->
+<h1>配送先の編集</h1>
+<%= form_with model: @address, url: public_address_path(@address.id), method: :patch do |f| %>
+    <table>
+            <tr>
+                <th>宛名</th>
+                <td>
+                    <%= f.label :postal_name, "氏名" %> <%= f.text_field :postal_name, :placeholder => @address.postal_name %>
+                    <%= f.label :postal_name_kana, "フリガナﾅ" %> <%= f.text_field :postal_name_kana, :placeholder => @address.postal_name_kana %>
+                </td>
+            </tr>
+            <tr>
+                <th>郵便番号(ハイフンなし７桁・半角)</th>
+                <td colspan="2">
+                     <%= f.text_field :postal_code, :placeholder => @address.postal_code, class: "jpostal_code" %>
+                </td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td>
+                    <%= f.text_field :postal_address, :placeholder => @address.postal_address, class: "jpostal_address" %>
+                </td>
+            </tr>
+            <tr>
+                <th><%= f.label :postal_telephone_number, "電話番号(ハイフンなし10or11桁・半角)" %></th>
+                <td>
+                    <%= f.text_field :postal_telephone_number, :placeholder => @address.postal_telephone_number %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <%= f.submit "新規登録する", class: "btn btn-success" %>
+                </td>
+            </tr>
+        </table>
+<% end %>

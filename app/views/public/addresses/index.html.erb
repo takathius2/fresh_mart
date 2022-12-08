@@ -12,32 +12,37 @@
     
     <%= link_to "配送先を新規登録", new_public_address_path, class: 'btn btn-info btn-md' %>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <% @addresses.each do |address| %>
+        <% @addresses.each do |address| %>
+            <div class="row">
+                <div class="col-12 border">
                     <table>
                         <tr>
-                            <th>宛名</th>
-                            <td>
+                            <th class="text_hed">宛名</th>
+                            <td class="text_field">
                                 <%= address.postal_name %>
                                 <%= address.postal_name_kana %>
                             </td>
                         </tr>
                         <tr>
-                            <th>配送先</th>
-                            <td>
+                            <th class="text_hed">配送先</th>
+                            <td class="text_field">
                                 <%= address.postal_code %>
-                                <%= address.postal_addresses %>
+                                <%= address.postal_address %>
                             </td>
                         </tr>
                         <tr>
-                            <th>電話番号</th>
-                            <td>
+                            <th class="text_hed">電話番号</th>
+                            <td class="text_field">
                                 <%= address.postal_telephone_number %>
                             </td>
                         </tr>
+                        <tr>
+                            <td><%= button_to "配送先の編集", edit_public_address_path(address.id), method: :get %></td><br>
+                            <td class="button_delete"><%= button_to "削除", public_address_path(address.id), method: :delete, class: 'btn btn-danger btn-sm', "data-confirm" => "本当に削除しますか？" %></td>
+                        </tr>
                     </table>
-                <% end %>
+                </div>
             </div>
-        </div>
+        <% end %>
+    </div>
 </div>
