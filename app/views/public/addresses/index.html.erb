@@ -1,9 +1,43 @@
 <div class="address1">
     <h3>自分の住所へ配送</h3>
-    <%= render 'address' %>
 </div>
 <%= link_to "編集する", edit_public_address_path(current_customer.id) %></p>
 
-<div class="address2">
+<div class="postal_addresses">
     <h3>登録済み住所</h3>
+    
+    <div class="text-success">
+        <%= flash[:notice] %>
+    </div>
+    
+    <%= link_to "配送先を新規登録", new_public_address_path, class: 'btn btn-info btn-md' %>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <% @addresses.each do |address| %>
+                    <table>
+                        <tr>
+                            <th>宛名</th>
+                            <td>
+                                <%= address.postal_name %>
+                                <%= address.postal_name_kana %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>配送先</th>
+                            <td>
+                                <%= address.postal_code %>
+                                <%= address.postal_addresses %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>電話番号</th>
+                            <td>
+                                <%= address.postal_telephone_number %>
+                            </td>
+                        </tr>
+                    </table>
+                <% end %>
+            </div>
+        </div>
 </div>
