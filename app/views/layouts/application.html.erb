@@ -39,9 +39,6 @@
           <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <li class="nav-item btn btn-sm">
-                <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
-              </li>
-              <li class="nav-item btn btn-sm">
                 <%= button_to "商品一覧", admin_items_path, method: :get %>
               </li>
               <li class="nav-item btn btn-sm">
@@ -52,6 +49,9 @@
               </li>
               <li class="nav-item btn btn-sm">
                 <%= button_to "ジャンル一覧", admin_genres_path, method: :get %>
+              </li>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
               </li>
               <!--<li class="nav-item btn btn-sm">-->
               <!--  <%#= button_to "カテゴリー一覧" %>-->
@@ -68,10 +68,10 @@
                 <%= button_to "カート", public_cart_items_path, method: :get %>
               </li>
               <li class="nav-item btn btn-sm">
-                <%= button_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                <%= button_to "Aboute", about_path, method: :get %>
               </li>
               <li class="nav-item btn btn-sm">
-                <%= button_to "Aboute", about_path, method: :get %>
+                <%= button_to "ログアウト", destroy_customer_session_path, method: :delete %>
               </li>
             <% else %>
               <li class="nav-item btn btn-sm">
