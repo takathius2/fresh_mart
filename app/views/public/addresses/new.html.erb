@@ -4,7 +4,7 @@
   <%= @address.errors.count %>件のエラーが発生しました
   <ul>
     <% @address.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li><%= t message %></li>
     <% end %>
   </ul>
 <% end %>
