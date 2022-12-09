@@ -3,19 +3,20 @@
 
 <table class="order_infomation">
     <tr>
-        <th>支払方法</th><td><%= @order.payment_methods_i18n %></td>
+        <th>支払方法</th><td><%= @order.payment_method_i18n %></td>
     </tr>
     <tr>
         <th>お届け先</th>
         <td>
-            <%= @order.postal_name %> (<%= @order.postal_name_kana) %>
-            <%= @order.postal_code %>
-            <%= @order.postal_address %>
+            <%= @order.delivery_name %>
+            <%= @order.delivery_code %>
+            <%= @order.delivery_address %>
         </td>
     </tr>
 </table>
 <table class="order_item_infomation">
     <tr>
+        <th></th>
         <th>商品名</th>
         <th>単価（税抜）</th>
         <th>数量</th>
@@ -42,9 +43,9 @@
     </tr>
     <tbody>
         <tr>
-            <td><%= @order.cost_price = 800 %>円</td>
-                <td><%= @total %>円</td>
-                <td><%= @order.price = (@total += 800 ) %>円</td>
+            <td><%= @order.cost_price %>円</td>
+            <td><%= @total_price %>円</td>
+            <td><%= @total_price + @order.cost_price.to_i %>円</td>
         </tr>
     </tbody>
 </table>

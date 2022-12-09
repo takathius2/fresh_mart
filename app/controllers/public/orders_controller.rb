@@ -10,17 +10,14 @@ class Public::OrdersController < ApplicationController
   def comfirm #注文情報確認画面HTTPメソッド:POST
     @customer = current_customer
     @cart_items = current_customer.cart_items
-    @order = Order.new(order_params)
-    @total = 0
-    @order.cost_price = 800
-    binding.pry
+    @total_price = 0
     
     # 配送先が自分の住所の時（0）の処理
     if params[:order][:delivery_method] == "0"
       # ログイン中の顧客自身のデータを@orderに代入していく
+      @order.delivery_name = current_customer.full_name
       @order.delivery_code = current_customer.postal_code
       @order.delivery_address = current_customer.address
-      @order.delivery_name = current_customer.full_name
     
     # 配送先が登録済み住所から選択された時（1）の処理
     elsif params[:order][:delivery_method] == "1"
@@ -35,12 +32,24 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:delivery_method] == "2"
       # 入力フォームから送られたデータを受け取り代入していく
       @order.delivery_name = params[:order][:delivery_name]
-      @order.delivery_address = params[:order][:delivery_name_kana]
+      @order.delivery_name_kana = params[:order][:delivery_name_kana]
       @order.delivery_code = params[:order][:delivery_code]
       @order.delivery_address = params[:order][:delivery_address]
-    else
-      render :new
+    #else
+      #render :new
     end
+    # 合計金額を出す
+    @cart_items.each do |cart_item|
+      price = cart_item.item.with_tax_price
+      @total_price += price
+    end
+    
+    @order = Order.new(order_params)
+    @total = 0
+    @order.cost_price = 800
+    @order.customer = current_customer 
+    @order.save!
+    render :comfirm
   end
   
   def create #注文確定処理HTTPメソッド：POST
@@ -86,6 +95,6 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:customer_id, :address_id, :payment_method, :delivery_telephone_number, :delivery_method, :cost_price,
-    :amount_billed_or_claimed, :order_status, :delivery_address, :delivery_code, :delivery_name)
+    :amount_billed_or_claimed, :order_status, :delivery_address, :delivery_code, :delivery_name, :delivery_name_kana)
   end
 end
