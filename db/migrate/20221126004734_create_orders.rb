@@ -12,6 +12,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
     t.string :cost_price
     t.string :amount_billed_or_claimed
     t.integer :order_status
+    t.string :delivery_name_kana
 
       t.timestamps
     end

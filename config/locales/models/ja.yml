@@ -1,7 +1,9 @@
 ja:
-  addresses:
-    new:
-      message:
+  activerecord:
+    models:
+      address: 配送先
+    attributes:
+      address:
         postal_name: 配送先の名前
         postal_name_kana: 配送先のフリガナ
         postal_address: 配送先住所

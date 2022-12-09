@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 2022_11_26_023354) do
     t.string "cost_price"
     t.string "amount_billed_or_claimed"
     t.integer "order_status"
+    t.string "delivery_name_kana"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
