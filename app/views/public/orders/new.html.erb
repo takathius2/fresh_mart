@@ -26,7 +26,7 @@
         <%= f.label :delivery_method, Order.delivery_methods_i18n[:new_shipping_address] %><br>
     
         <p>新しい配送先を指定してください</p>
-        <p>宛名<%= f.text_field :delivery_name %></p>
+        <p>宛名<%= f.text_field :delivery_name %> フリガナ(<%= f.text_field :delivery_name_kana) %></p>
         <p>※ハイフン無し7桁</p>
         <p>〒<%= f.text_field :delivery_code %></p>
         <p>住所<%= f.text_area :delivery_address %></p><br>
