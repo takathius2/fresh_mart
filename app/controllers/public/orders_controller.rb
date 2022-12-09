@@ -12,6 +12,12 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @total_price = 0
     
+    # 合計金額を出す
+    @cart_items.each do |cart_item|
+      price = cart_item.item.with_tax_price
+      @total_price += price
+    end
+    
     # 配送先が自分の住所の時（0）の処理
     if params[:order][:delivery_method] == "0"
       # ログイン中の顧客自身のデータを@orderに代入していく
@@ -37,11 +43,6 @@ class Public::OrdersController < ApplicationController
       @order.delivery_address = params[:order][:delivery_address]
     #else
       #render :new
-    end
-    # 合計金額を出す
-    @cart_items.each do |cart_item|
-      price = cart_item.item.with_tax_price
-      @total_price += price
     end
     
     @order = Order.new(order_params)
