@@ -16,18 +16,19 @@
 </table>
 <table class="order_item_infomation">
     <tr>
+        
         <th></th>
         <th>商品名</th>
         <th>単価（税抜）</th>
         <th>数量</th>
-        <th>小計</th>
+        <th>小計(税込)</th>
     </tr>
     <% @cart_items.each do |cart_item| %>
         <tbody>
             <tr>
                 <td><%= image_tag cart_item.item.get_item_image(100,100) %></td>
                 <td><%= cart_item.item.item_name %></td>
-                <td><%= cart_item.item.with_tax_price %>円</td>
+                <td><%= cart_item.item.no_tax_item_price %>円</td>
                 <td><%= cart_item.amount %><%= cart_item.item.unit %></td>
                 <td><%= cart_item.subtotal %>円</td>
             </tr>
@@ -35,17 +36,27 @@
         </tbody>
     <% end %>
 </table>
-<table class="order_total">
-    <tr>
-        <th>送料</th>
-        <th>商品合計</th>
-        <th>請求金額</th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><%= @order.cost_price %>円</td>
-            <td><%= @total_price %>円</td>
-            <td><%= @total_price + @order.cost_price.to_i %>円</td>
-        </tr>
-    </tbody>
-</table>
+<div class="order_total_container">
+    <div class="row">
+        <div class="col-lg-9"></div>
+        <div class="col-lg-3">
+            <table class="order_total">
+                <tr>
+                    <th>商品合計金額</th><td><%= @total_price %>円</td>
+                </tr>
+                <tr>
+                    <th>送料</th><td><%= @order.cost_price %>円</td>
+                </tr>
+                <tr>
+                    <th>請求金額</th> <td><%= @total_price + @order.cost_price.to_i %>円</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<%= form_with model: @order, url: public_orders_path, mothod: :post do |f| %>
+    <%= f.hidden_field :delivery_name %>
+    <%= f.hidden_field :delivery_code %>
+    <%= f.hidden_field :delivery_address %>
+    <%= f.submit '注文確定' %>
+<% end %>
