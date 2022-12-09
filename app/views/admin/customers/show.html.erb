@@ -5,10 +5,7 @@
            <th>会員ID</th><td><%= @customer.id %></td>
        </tr>
        <tr>
-           <th>氏名</th><td><%= @customer.last_name %> <%= @customer.first_name %></td>
-       </tr>
-       <tr>
-           <th>フリガナ</th><td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+           <th>氏名</th><td><%= @customer.full_name %>(<%= @customer.full_name_kana %>)</td>
        </tr>
        <tr>
            <th>郵便番号</th><td><%= @customer.postal_code %></td>

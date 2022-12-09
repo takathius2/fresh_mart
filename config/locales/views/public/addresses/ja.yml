@@ -1,0 +1,10 @@
+ja:
+  addresses:
+    errors:
+      full_messages:
+        message:
+          postal_name: 配送先の名前
+          postal_name_kana: 配送先のフリガナ
+          postal_address: 配送先住所
+          postal_code: 配送先の郵便番号
+          postal_telephone_number: 配送先の電話番号
