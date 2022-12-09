@@ -1,0 +1,50 @@
+<h1>注文情報確認</h1>
+<p>間違いがないかご確認ください</p>
+
+<table class="order_infomation">
+    <tr>
+        <th>支払方法</th><td><%= @order.payment_methods_i18n %></td>
+    </tr>
+    <tr>
+        <th>お届け先</th>
+        <td>
+            <%= @order.postal_name %> (<%= @order.postal_name_kana) %>
+            <%= @order.postal_code %>
+            <%= @order.postal_address %>
+        </td>
+    </tr>
+</table>
+<table class="order_item_infomation">
+    <tr>
+        <th>商品名</th>
+        <th>単価（税抜）</th>
+        <th>数量</th>
+        <th>小計</th>
+    </tr>
+    <% @cart_items.each do |cart_item| %>
+        <tbody>
+            <tr>
+                <td><%= image_tag cart_item.item.get_item_image(100,100) %></td>
+                <td><%= cart_item.item.item_name %></td>
+                <td><%= cart_item.item.with_tax_price %>円</td>
+                <td><%= cart_item.amount %><%= cart_item.item.unit %></td>
+                <td><%= cart_item.subtotal %>円</td>
+            </tr>
+            <% @total += cart_item.subtotal %>
+        </tbody>
+    <% end %>
+</table>
+<table class="order_total">
+    <tr>
+        <th>送料</th>
+        <th>商品合計</th>
+        <th>請求金額</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td><%= @order.cost_price = 800 %>円</td>
+                <td><%= @total %>円</td>
+                <td><%= @order.price = (@total += 800 ) %>円</td>
+        </tr>
+    </tbody>
+</table>

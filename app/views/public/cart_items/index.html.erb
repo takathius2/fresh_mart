@@ -32,13 +32,13 @@
                 <% @total += cart_item.subtotal %>
             <% end %>
         </tbody>
-    </table>
-    <p>合計金額（税込）<%= @total %>円</p>
+    </table><br>
+    <h4>合計金額（税込）<%= @total %>円</h4><br>
     <%= link_to "買い物を続ける", '/', class: 'btn btn-primary btn-sm' %><br>
     <% if @total == 0 %>
     <% else %>
+        <%= button_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
         <%= link_to "会計する", new_public_order_path, class: 'btn btn-success btn-sm' %>
     <% end %>
     
-    <%= button_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に空にしますか？" %>
 </div>
