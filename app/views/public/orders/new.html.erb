@@ -24,13 +24,13 @@
 <!--新しい配送先を作成-->
     <%= f.radio_button :delivery_method, Order.delivery_methods.key(2) %>
         <%= f.label :delivery_method, Order.delivery_methods_i18n[:new_shipping_address] %><br>
-    
+        
         <p>新しい配送先を指定してください</p>
         <p>宛名<%= f.text_field :delivery_name %> フリガナ(<%= f.text_field :delivery_name_kana%>）</p>
         <p>※ハイフン無し7桁</p>
         <p>〒<%= f.text_field :delivery_code %></p>
         <p>住所<%= f.text_area :delivery_address %></p><br>
     
-    <%= f.submit '確認画面へ進む' %>
+    <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
 <% end %>
 </div>
