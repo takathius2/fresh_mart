@@ -5,6 +5,7 @@ class Order < ApplicationRecord
     
     validates :payment_method, presence: true
     validates :delivery_method, presence: true
+   
     
     has_one_attached :item_image
     
@@ -16,6 +17,7 @@ class Order < ApplicationRecord
         end
         item_image.variant(resize_to_limit: [width, height]).processed
     end
+    
     
     #0ならクレジット払い、1なら銀行振込
     enum payment_method: { credit_card: 0, transfer: 1 }

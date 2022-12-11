@@ -2,17 +2,24 @@
 <p>間違いがないかご確認ください</p>
 
 <table class="order_infomation">
-    <tr>
-        <th>支払方法</th><td><%= @order.payment_method_i18n %></td>
-    </tr>
-    <tr>
-        <th>お届け先</th>
-        <td>
-            <%= @order.delivery_name %>
-            <%= @order.delivery_code %>
-            <%= @order.delivery_address %>
-        </td>
-    </tr>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-9">
+            <tr>
+                <th>支払方法</th><td><%= @order.payment_method_i18n %></td>
+            </tr>
+            <tr>
+                <th>お届け先情報</th>
+            </tr>
+            <tr>
+                <th>氏名（フリガナ）</th><td> <%= @order.delivery_name %>(<%= @order.delivery_name_kana %>)</td>
+            </tr>
+            <tr>
+                <th>住所</th><td>〒<%= @order.delivery_code %> <%= @order.delivery_address %></td>
+            </tr>
+        </div>
+    </div>
+  
 </table>
 <table class="order_item_infomation">
     <tr>
@@ -38,8 +45,8 @@
 </table>
 <div class="order_total_container">
     <div class="row">
-        <div class="col-lg-9"></div>
-        <div class="col-lg-3">
+        <div class="col-lg-8"></div>
+        <div class="col-lg-4">
             <table class="order_total">
                 <tr>
                     <th>商品合計金額</th><td><%= @total_price %>円</td>
@@ -48,15 +55,24 @@
                     <th>送料</th><td><%= @order.cost_price %>円</td>
                 </tr>
                 <tr>
-                    <th>請求金額</th> <td><%= @total_price + @order.cost_price.to_i %>円</td>
+                    <th>請求金額</th> 
+                    <td><%= @total_price + @order.cost_price.to_i %>円</td>
+                    <th></th>
+                    <td>
+                        <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+                            <%= f.hidden_field :customer_id %>
+                            <%= f.hidden_field :payment_method %>
+                            <%= f.hidden_field :cost_price %>
+                            <%= f.hidden_field :amount_billed_or_claimed %>
+                            <%= f.hidden_field :delivery_name %>
+                            <%= f.hidden_field :delivery_code %>
+                            <%= f.hidden_field :delivery_address %>
+                            <%= f.submit '注文確定', class: "btn btn-sm btn-success" %>
+                        <% end %>
+                    </td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
-<%= form_with model: @order, url: public_orders_path, mothod: :post do |f| %>
-    <%= f.hidden_field :delivery_name %>
-    <%= f.hidden_field :delivery_code %>
-    <%= f.hidden_field :delivery_address %>
-    <%= f.submit '注文確定' %>
-<% end %>
+<%= button_to "カートに戻る", public_cart_items_path, method: :get  %>
