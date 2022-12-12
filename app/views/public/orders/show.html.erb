@@ -1,2 +1,66 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div>
+<h3>注文履歴詳細</h3>
+    <table>
+        <tr>
+            <th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d')%></td>
+        </tr>
+        <tr>
+            <th>支払方法</th><td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+            <th>お届け先情報</th><td></td>
+        </tr>
+        <tr>
+            <th>氏名（フリガナ）</th><td> <%= @order.delivery_name %>(<%= @order.delivery_name_kana %>)</td>
+        </tr>
+        <tr>
+            <th>住所</th><td>〒<%= @order.delivery_code %> <%= @order.delivery_address %></td>
+        </tr>
+    </table>
+    <h3>注文内容</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>商品</th>
+                <th>単位</th>
+                <th>単価（税込）</th>
+                <th>個数</th>
+                <th>小計</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @order_detail.each do |order_detail| %>
+            <tr>
+                <td><%= order_detail.item.item_name %></td>
+                <td><%= order_detail.item.unit %></td>
+                <td><%= order_detail.item.with_tax_price %>円</td>
+                <td><%= order_detail.amount %></td>
+                <td>
+                    <%= order_detail.item.with_tax_price * order_detail.amount %>
+                    <% @total += order_detail.item.with_tax_price * order_detail.amount %>
+                </td>
+            </tr>
+        <% end %>
+        <% @total %>
+        </tbody>
+    </table>
+    <h3>請求情報</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>商品合計</th>
+                <th>配送料</th>
+                <th>ご請求額</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <td><%= @total %></td>
+                <td><%= @order.cost_price = 800 %>円</td>
+                <td><%= @total + @order.cost_price.to_i %>円</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<%= link_to "注文履歴一覧に戻る", public_orders_path %>

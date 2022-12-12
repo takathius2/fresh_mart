@@ -67,7 +67,7 @@ class Public::OrdersController < ApplicationController
         order_detail.order_id = @order.id
         order_detail.item_id = cart_item.item_id
         order_detail.amount = cart_item.amount
-        order_detail.amount_billed_or_claimed = cart_item.item.with_tax_price
+        order_detail.amount_billed_or_claimed = @order.amount_billed_or_claimed
         order_detail.save!
       end
       current_customer.cart_items.destroy_all
