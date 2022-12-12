@@ -2,7 +2,7 @@ class Home < ApplicationRecord
     has_many :orders, dependent: :destroy
     has_many :order_details, dependent: :destroy
     has_many :items, dependent: :destroy
-    
+    has_many :addresses, dependent: :destroy
     
     has_one_attached :item_image
     

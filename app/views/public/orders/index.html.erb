@@ -16,13 +16,13 @@
                                 </tr>
                                 <!--商品の金額を一つずつ足していく-->
                                     <% @total += order_detail.item.with_tax_price * order_detail.amount %>
-                                <tr>
-                                    <th>支払金額</th><td><%= @total += 800 %>円</td>
-                                </tr>
-                                <tr>
-                                    <th>注文詳細</th><td><%= link_to '表示する', public_order_path(order.id) %></td>
-                                </tr>
                             <% end %>
+                                <tr>
+                                    <th>支払金額</th><td><%= @total + 800 %>円</td>
+                                </tr>
+                                <tr>
+                                </tr>
+                            <th>注文詳細</th><td><%= link_to '表示する', public_order_path(order.id) %></td>
                     <% end %>
             </table>
     </div>

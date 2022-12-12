@@ -27,6 +27,7 @@
         <th></th>
         <th>商品名</th>
         <th>単価（税抜）</th>
+        <th>単位</th>
         <th>数量</th>
         <th>小計(税込)</th>
     </tr>
@@ -36,7 +37,8 @@
                 <td><%= image_tag cart_item.item.get_item_image(100,100) %></td>
                 <td><%= cart_item.item.item_name %></td>
                 <td><%= cart_item.item.no_tax_item_price %>円</td>
-                <td><%= cart_item.amount %><%= cart_item.item.unit %></td>
+                <td><%= cart_item.item.unit %></td>
+                <td><%= cart_item.amount %></td>
                 <td><%= cart_item.subtotal %>円</td>
             </tr>
             <% @total += cart_item.subtotal %>
@@ -57,11 +59,13 @@
                 <tr>
                     <th>請求金額</th> 
                     <td><%= @total_price + @order.cost_price.to_i %>円</td>
+                    <% order.amount_billed_or_claimed = @total_price + @order.cost_price.to_i %>
                     <th></th>
                     <td>
                         <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
                             <%= f.hidden_field :customer_id %>
                             <%= f.hidden_field :payment_method %>
+                            <%= f.hidden_field :delivery_method %>
                             <%= f.hidden_field :cost_price %>
                             <%= f.hidden_field :amount_billed_or_claimed %>
                             <%= f.hidden_field :delivery_name %>
