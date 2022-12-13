@@ -1,4 +1,4 @@
-<h3>注文履歴一覧</h3>
+<h3>注文履歴一覧</h3>（全<%= @orders.count %>件）
 <div class="order-index-container">
     <div class="order-index-row">
             <table>
@@ -27,3 +27,4 @@
             </table>
     </div>
 </div>
+<%= paginate @orders %>

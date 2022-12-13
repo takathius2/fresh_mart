@@ -1,2 +1,22 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+
+<table class="order_detail">
+    <tr>
+        <th>購入者</th><td><%= @order_detail.customer.full_name %></td>
+    </tr>
+    <tr>
+        <th>注文受付日</th><td><%= @order_detail.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+        <th>支払い方法</th><td><%= @order_detail.payment_method_i18n %></td>
+    </tr>
+    <tr>
+        <th>商品合計</th><td><%= @order.amount_billed_or_claimed.item.with_tax_price %>円</td>
+    </tr>
+    <tr>
+        <th>送料</th><td><%= @order.cost_price %>円</td>
+    </tr>
+    <tr>
+        <th>請求金額合計</th><td><%= %></td>
+    </tr>
+</table>
