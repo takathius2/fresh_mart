@@ -6,9 +6,9 @@
                 <th></th>
                 <th>商品名</th>
                 <th>単位</th>
-                <th>単価(税込)</th>
+                <th>単価(税抜)</th>
                 <th>数量</th>
-                <th>小計</th>
+                <th>小計(税込)</th>
                 <th></th>
             </tr>
         </thead>
@@ -18,7 +18,7 @@
                     <td><%= image_tag cart_item.item.get_item_image(100,100) %></td>
                     <td><%= cart_item.item.item_name %></td>
                     <td><%= cart_item.item.unit %></td>
-                    <td><%= cart_item.item.with_tax_price %>円</td>
+                    <td><%= cart_item.item.no_tax_item_price %>円</td>
                     <td>
                         <%= cart_item.amount %>
                         <%= form_with model: @cart_items, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>

@@ -1,10 +1,7 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def new #注文情報・支払方法入力画面
     @order = Order.new
-    # @customer = current_customer
-    # @customer = Customer.all
-    # @address = Address.all
-    # @orders = @customer
   end
 
   def comfirm #注文情報確認画面HTTPメソッド:POST
@@ -31,7 +28,6 @@ class Public::OrdersController < ApplicationController
       
     # 配送先を新しく作成する時（2）の処理
     elsif params[:order][:delivery_method] == Order.delivery_methods.key(2)
-      
       # 入力フォームから送られたデータを受け取り代入していく
       @order.delivery_name = params[:order][:delivery_name]
       @order.delivery_name_kana = params[:order][:delivery_name_kana]
@@ -41,11 +37,12 @@ class Public::OrdersController < ApplicationController
     #else
       #render :new
     end
+    
     @customer = current_customer
     @cart_items = current_customer.cart_items
-    @total_price = 0
     
-    # 合計金額を出す
+    # 合計金額を出す（税込）
+    @total_price = 0
     @cart_items.each do |cart_item|
       price = cart_item.item.with_tax_price
       @total_price += price
@@ -55,8 +52,12 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @order.cost_price = 800
     @order.customer = current_customer 
-    @order.save!
-    render :comfirm
+    
+    if @order.save
+      render :comfirm
+    else
+      render :new
+    end
   end
   
   def create #注文確定処理HTTPメソッド：POST
@@ -84,7 +85,7 @@ class Public::OrdersController < ApplicationController
 
   def index #注文履歴
     @customer = current_customer.cart_items
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page])
     @order_detail = OrderDetail.all
     @item = Item.all
     @address = Address.all

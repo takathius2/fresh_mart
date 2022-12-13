@@ -1,36 +1,46 @@
 <div>
-<h1>注文情報を入力</h1><br>
-
-<h3>支払方法を選択</h3>
-<%= form_with model: @order, url: public_orders_comfirm_path, method: :post do |f| %>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+    <h1>注文情報を入力</h1><br>
     
+    <% if @order.errors.any? %>
+      <%= @order.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
-    
-<h2>お届け先</h2>
-<!--自分の住所を選択-->
-    <%= f.radio_button :delivery_method, Order.delivery_methods.key(0) %>
-        <%= f.label :delivery_method, Order.delivery_methods_i18n[:my_address] %><br>
-        <%= current_customer.postal_code %><br><%= current_customer.address %><br>
-
-<!--既存住所から選択-->
-    <%= f.radio_button :delivery_method, Order.delivery_methods.key(1) %>
-        <%= f.label :delivery_method, Order.delivery_methods_i18n[:existing_delivery_address] %><br>
-        <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
-    
-<!--新しい配送先を作成-->
-    <%= f.radio_button :delivery_method, Order.delivery_methods.key(2) %>
-        <%= f.label :delivery_method, Order.delivery_methods_i18n[:new_shipping_address] %><br>
+    <h3>支払方法を選択</h3>
+        <%= form_with model: @order, url: public_orders_comfirm_path, method: :post do |f| %>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+            
         
-        <p>新しい配送先を指定してください</p>
-        <p>宛名<%= f.text_field :delivery_name %> フリガナ(<%= f.text_field :delivery_name_kana%>）</p>
-        <p>※ハイフン無し7桁</p>
-        <p>〒<%= f.text_field :delivery_code %></p>
-        <p>住所<%= f.text_area :delivery_address %></p><br>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+        
+    <h2>お届け先</h2>
+    <!--自分の住所を選択-->
+        <%= f.radio_button :delivery_method, Order.delivery_methods.key(0) %>
+            <%= f.label :delivery_method, Order.delivery_methods_i18n[:my_address] %><br>
+            <%= current_customer.postal_code %><br><%= current_customer.address %><br>
     
-    <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
-<% end %>
+    <!--既存住所から選択-->
+        <%= f.radio_button :delivery_method, Order.delivery_methods.key(1) %>
+            <%= f.label :delivery_method, Order.delivery_methods_i18n[:existing_delivery_address] %><br>
+            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+        
+    <!--新しい配送先を作成-->
+        <%= f.radio_button :delivery_method, Order.delivery_methods.key(2) %>
+            <%= f.label :delivery_method, Order.delivery_methods_i18n[:new_shipping_address] %><br>
+            
+            <p>新しい配送先を指定してください</p>
+            <p>宛名<%= f.text_field :delivery_name %> フリガナ(<%= f.text_field :delivery_name_kana%>）</p>
+            <p>※ハイフン無し7桁</p>
+            <p>〒<%= f.text_field :delivery_code %></p>
+            <p>住所<%= f.text_area :delivery_address %></p><br>
+        
+        <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+        <%= link_to "カートに戻る", public_cart_items_path  %>
+    <% end %>
 </div>
