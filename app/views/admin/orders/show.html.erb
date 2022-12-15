@@ -10,13 +10,28 @@
     <tr>
         <th>支払い方法</th><td><%= @order_detail.payment_method_i18n %></td>
     </tr>
+        <% @order.order_details.each do |order_detail| %>
+            <tr>
+                <th>注文商品</th><td><%= order_detail.item.item_name %></td>
+            </tr>
+        <% end %>  
     <tr>
-        <th>商品合計</th><td><%= @order.amount_billed_or_claimed.item.with_tax_price %>円</td>
+        <th>商品合計</th><td>
+            <% if @order_detail.amount_billed_or_claimed.to_i == 0 %>
+                <%= @order_detail.amount_billed_or_claimed = 0 %>円
+            <% else %>
+                <%= @order_detail.amount_billed_or_claimed.to_i - @order.cost_price.to_i %>円</td>
+            <% end %>
     </tr>
     <tr>
         <th>送料</th><td><%= @order.cost_price %>円</td>
     </tr>
     <tr>
-        <th>請求金額合計</th><td><%= %></td>
+        <th>請求金額合計</th><td>
+            <% if @order_detail.amount_billed_or_claimed.to_i == 0 %>
+                <%= @order_detail.amount_billed_or_claimed = 800 %>円
+            <% else %>
+                <%= @order_detail.amount_billed_or_claimed.to_i %>円</td>
+            <% end %>
     </tr>
 </table>

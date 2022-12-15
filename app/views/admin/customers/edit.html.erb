@@ -5,8 +5,8 @@
 <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
   <div class="field">
     <%= f.label :氏名 %>
-    <%= f.text_field :last_name %>
     <%= f.text_field :first_name %>
+    <%= f.text_field :last_name %>
   </div>
   
   <div class="field">

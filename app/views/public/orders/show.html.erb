@@ -37,6 +37,7 @@
                 <td><%= order_detail.amount %></td>
                 <td>
                     <%= order_detail.item.with_tax_price * order_detail.amount %>円
+                    <!--商品の金額を一つずつ足していく-->
                     <% @total += order_detail.item.with_tax_price * order_detail.amount %>
                 </td>
             </tr>

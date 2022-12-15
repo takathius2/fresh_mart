@@ -27,16 +27,16 @@
             </td>
           </tr>
           <tr>
-            <th><%= f.label :email, "メールアドレス" %></th>
-            <td colspan="2"><%= f.email_field :email, autocomplete: "email" %></td>
-          </tr>
-          <tr>
             <th><%= f.label :postal_code, "郵便番号(ハイフンなし7桁・半角)" %></th>
             <td colspan="2">
               <!--<input type="text" name="postal_code" size="10" maxlength="7" onKeyUp="AjaxZip3.zip2addr('zip', '', 'address', 'address');">-->
               <%#= f.hidden_field :postal_code, :value => customer.postal_code %>
               <%= f.text_field :postal_code, :placeholder =>"5420076", class: "jpostal_code" %>
             </td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, "メールアドレス" %></th>
+            <td colspan="2"><%= f.email_field :email, autocomplete: "email" %></td>
           </tr>
           <tr>
             <th><%= f.label :address, "住所" %></th>
