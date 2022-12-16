@@ -49,19 +49,16 @@
     <table>
         <thead>
             <tr>
-                <th>商品合計</th>
-                <th>配送料</th>
-                <th>ご請求額</th>
+                <th>商品合計</th><td><%= @total %>円</td>
+            </tr>
+            <tr>
+                <th>配送料</th><td><%= @order.cost_price = 800 %>円</td>
+                
+            </tr>
+            <tr>
+                <th>ご請求額</th><td><%= @total + @order.cost_price.to_i %>円</td>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-               
-                <td><%= @total %>円</td>
-                <td><%= @order.cost_price = 800 %>円</td>
-                <td><%= @total + @order.cost_price.to_i %>円</td>
-            </tr>
-        </tbody>
     </table>
 </div>
 <%= link_to "注文履歴一覧に戻る", public_orders_path %>

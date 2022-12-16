@@ -1,4 +1,12 @@
 <h2>商品情報編集</h2>
+<% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+<% end %>
 <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
     <label for="inputImage">商品画像</label>
         <%= f.file_field :item_image, placeholder:"商品画像", accept:"item_image/*" %><br>

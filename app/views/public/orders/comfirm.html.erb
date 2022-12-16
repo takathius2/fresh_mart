@@ -51,14 +51,14 @@
         <div class="col-lg-4">
             <table class="order_total">
                 <tr>
-                    <th>商品合計金額</th><td><%= @total_price %>円（税込）</td>
+                    <th>商品合計金額</th><td><%= @total %>円（税込）</td>
                 </tr>
                 <tr>
                     <th>送料</th><td><%= @order.cost_price %>円</td>
                 </tr>
                 <tr>
                     <th>請求金額</th> 
-                    <td><%= @total_price + @order.cost_price.to_i %>円（税込）</td>
+                    <td><%= @total + @order.cost_price.to_i %>円（税込）</td>
                     <% @order.amount_billed_or_claimed = @total_price + @order.cost_price.to_i %>
                     <th></th>
                     <td>

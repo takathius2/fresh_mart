@@ -11,6 +11,8 @@ class CartItem < ApplicationRecord
         end
         item_image.variant(resize_to_limit: [width, height]).processed
     end
+    
+    
     #小計を求めるメソッド
     def subtotal
         item.with_tax_price * amount
