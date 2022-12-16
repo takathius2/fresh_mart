@@ -1,16 +1,25 @@
 ja:
   activerecord:
     models:
+      item: 商品
       address: 配送先
+      customer: お客様
+      admin: 管理者
+      genre: ジャンル
+      order: 注文
+      order_detail: 注文詳細
     attributes:
+      item:
+        item_name: 商品名
+        introduction: 商品説明
+        content_volume: 内容量
+        unit: 単位
       address:
         postal_name: 配送先の名前
         postal_name_kana: 配送先のフリガナ
         postal_address: 配送先住所
         postal_code: 配送先の郵便番号
         postal_telephone_number: 配送先の電話番号
-      customer: お客様
-    attributes:
       customer:
         email: メールアドレス
         first_name: 苗字
@@ -19,30 +28,16 @@ ja:
         last_name_kana: 名前のフリガナ
         postal_code: 郵便番号
         address: 住所
+        encrypted_password: パスワード
         telephone_number: 電話番号
-      admin: 管理者
-    attributes:
       admin:
         email: メールアドレス
         encrypted_password: パスワード
-      genre: ジャンル
-    attributes:
       genre:
         genre_name: ジャンル名
-      item: 商品
-    attributes:
-      item:
-        item_name: 商品名
-        introduction: 商品説明
-        content_volume: 内容量
-        unit: 単位
-      order_detail: 注文詳細
-    attributes:
       order_detail:
         amount_billed_or_claimed: 合計請求金額
         amount: 数量
-      order: 注文
-    attributes:
       order:
         delivery_telephone_number: お届け先電話番号
         delivery_name: お届け先氏名

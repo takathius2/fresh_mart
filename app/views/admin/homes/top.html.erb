@@ -2,7 +2,6 @@
 
 <h3>注文履歴一覧</h3>
 <table>
-    <% @orders.each do |order| %>
     <table>
         <tr>
             <thead>
@@ -15,16 +14,16 @@
             
         </tr>
             <tbody>
-                <td>
-                    <%= link_to admin_order_path(order.id) do %>
-                        <%= order.created_at.strftime('%Y/%m/%d') %>
-                    <% end %>
-                </td>
-                <td><%= order.customer.full_name %></td>
-                <td><%= order.order_details.sum(:amount) %></td>
+                <% @orders.each do |order| %>
+                    <td>
+                        <%= link_to admin_order_path(order.id) do %>
+                            <%= l order.created_at %>
+                <% end %>
+                    </td>
+                    <td><%= order.customer.full_name %></td>
+                    <td><%= order.order_details.sum(:amount) %>件</td>
             </tbody>
         </tr>
-    
     <% end %>
 </table>
 <%= paginate @orders %>

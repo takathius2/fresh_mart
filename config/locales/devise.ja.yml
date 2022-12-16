@@ -1,7 +1,16 @@
 ja:
   activerecord:
     attributes:
-      user:
+      customer:
+        email: メールアドレス
+        first_name: 苗字
+        first_name_kana: 苗字のフリガナ
+        last_name: 名前
+        last_name_kana: 名前のフリガナ
+        postal_code: 郵便番号
+        address: 住所
+        encrypted_password: パスワード
+        telephone_number: 電話番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -26,7 +35,7 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
     models:
-      user: ユーザー
+      customer: お客様情報
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

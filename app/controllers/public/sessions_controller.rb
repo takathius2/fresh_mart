@@ -28,7 +28,6 @@ class Public::SessionsController < Devise::SessionsController
   #ログインのcreateアクションの前に顧客が退会しているか調べる
   before_action :customer_state, only: [:create]
   
-  
   protected
   
   #退会しているか調べるメソッド

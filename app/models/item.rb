@@ -3,6 +3,11 @@ class Item < ApplicationRecord
     has_many :order_details, dependent: :destroy
     has_many :cart_items, dependent: :destroy
     
+    # 必須項目入力漏れがないかチェック
+    validates :introduction, presence: true
+    validates :item_name, presence: true
+    validates :content_volume, presence: true
+    validates :unit, presence: true
     
     #商品画像用のコード
     has_one_attached :item_image
@@ -11,8 +16,6 @@ class Item < ApplicationRecord
     def with_tax_price
         (no_tax_item_price*1.1).floor
     end
-    
-    
     
     def get_item_image(width, height)
         unless item_image.attached?
