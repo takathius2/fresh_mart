@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -64,16 +64,23 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'kaminari','~> 1.2.1'
-gem 'net-smtp'
-gem 'net-imap'
-gem 'net-pop'
 gem 'enum_help'
 # 都道府県コードから都道府県名を変換する
 gem 'jp_prefecture' 
 # RailsでjQueryを使えるようにする
 gem 'jquery-rails' 
 
+# 画像アップロードで使用
 gem 'carrierwave'
-gem 'rmagick'
 
+gem 'rmagick'
 gem 'scss'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
+gem 'net-smtp'
+gem 'net-pop'
+gem 'net-imap'
