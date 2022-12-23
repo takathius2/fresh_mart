@@ -74,7 +74,7 @@ gem 'jquery-rails'
 gem 'carrierwave'
 
 gem 'rmagick'
-gem 'scss'
+gem 'sass'
 
 gem 'dotenv-rails'
 group :production do
