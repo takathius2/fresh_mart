@@ -52,8 +52,7 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @order.cost_price = 800
     @order.customer = current_customer 
-    
-    if @order.save
+    if @order.save!
       render :comfirm
     else
       render :new
