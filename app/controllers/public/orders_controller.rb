@@ -86,7 +86,7 @@ class Public::OrdersController < ApplicationController
   def index #注文履歴
     @customer = current_customer.cart_items
     @orders = current_customer.orders.page(params[:page])
-    @order_detail = OrderDetail.all
+    @order_details = OrderDetail.all
     @item = Item.all
     @address = Address.all
     @total = 0
