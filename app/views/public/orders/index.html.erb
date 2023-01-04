@@ -11,8 +11,6 @@
                         <tr>
                             <th>配送先</th><td><%= order.delivery_name %>(<%= order.delivery_name_kana %>)</td>
                         </tr>
-                        
-                           
                             <th>注文詳細</th><td><%= link_to '表示する', public_order_path(order.id) %></td>
                     <% end %>
             </table>
