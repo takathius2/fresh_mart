@@ -1,6 +1,8 @@
 class Order < ApplicationRecord
     has_many :addresses, dependent: :destroy
     has_many :order_details, dependent: :destroy
+    has_one :order_destination
+    accepts_nested_attributes_for :order_destination
     belongs_to :customer
     
     validates :payment_method, presence: true
@@ -26,5 +28,5 @@ class Order < ApplicationRecord
     enum delivery_method: { my_address: 0, existing_delivery_address: 1, new_shipping_address: 2 }
     
     # 0なら入金待ち、１なら入金確認、２なら発送準備中、３なら発送完了
-    enum order_status: { awaiting_payment: 0, payment_confirmation: 1, preparing_to_ship: 2, dispatched_completed: 3}
+    enum order_status: { awaiting_payment: 0, payment_confirmation: 1, preparing_to_ship: 2, dispatched_completed: 3 }
 end
