@@ -18,8 +18,10 @@
         
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
             <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
-        
+     
+       
     <h2>お届け先</h2>
+    <%= form_with model: @order_destination: do |f| %>
     <!--自分の住所を選択-->
         <%= f.radio_button :delivery_method, Order.delivery_methods.key(0) %>
             <%= f.label :delivery_method, Order.delivery_methods_i18n[:my_address] %><br>

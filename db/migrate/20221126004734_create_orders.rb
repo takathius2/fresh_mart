@@ -3,8 +3,8 @@ class CreateOrders < ActiveRecord::Migration[6.1]
     create_table :orders do |t|
     t.integer :customer_id
     t.integer :address_id
-    t.integer :payment_method, null:false
-    t.integer :delivery_method, null:false
+    t.integer :payment_method, null: false
+    t.integer :delivery_method, null: false
     t.string :delivery_telephone_number
     t.string :delivery_name
     t.string :delivery_code

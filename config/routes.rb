@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     # 注文関連
     post 'orders/comfirm' => 'orders#comfirm'
     get 'orders/complete' => 'orders#complete', as: 'complete'
-    resources :orders, only:[:new, :create, :index, :show]
+    resources :orders, only:[:new, :create, :index, :show] do
+      resources :order_destinations
+    end
     
     # カテゴリー関連
     resources :categories, only:[:index]
