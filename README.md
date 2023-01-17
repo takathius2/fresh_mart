@@ -36,4 +36,5 @@ https://docs.google.com/spreadsheets/d/1REfH5yZcNJg7iJOGpbvfAjeYRojwEhY8PeoKLyhO
 - IDE：Cloud9
 
 ## 使用素材
-今は未定
+- ヘッダー画像：ぱくたそ
+- ロゴ：designevo
