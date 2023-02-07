@@ -3,8 +3,8 @@ ja:
     attributes:
       customer:
         email: メールアドレス
-        first_name: 苗字
-        first_name_kana: 苗字のフリガナ
+        first_name: 姓
+        first_name_kana: 姓のフリガナ
         last_name: 名前
         last_name_kana: 名前のフリガナ
         postal_code: 郵便番号

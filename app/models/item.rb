@@ -8,11 +8,12 @@ class Item < ApplicationRecord
     validates :item_name, presence: true
     validates :content_volume, presence: true
     validates :unit, presence: true
-    
+    validates :no_tax_item_price, presence: true
+   
     #商品画像用のコード
     has_one_attached :item_image
     
-     #消費税を求めるメソッド（10％
+     #消費税を求めるメソッド（10％）
     def with_tax_price
         (no_tax_item_price*1.1).floor
     end

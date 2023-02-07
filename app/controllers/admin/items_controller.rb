@@ -21,17 +21,25 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      flash[:success] = "商品を新規登録しました。"
       redirect_to admin_items_path
     else
       @genres = Genre.all
+      @items = Item.page(params[:page])
+      flash.now[:danger] = "商品の登録に失敗しました。"
       render :new
     end
   end  
   
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admin_items_path
+    if @item.update(item_params)
+      flash[:success] = "商品情報を更新しました。"
+      redirect_to admin_items_path
+    else
+      flash.now[:danger] = "商品情報の更新に失敗しました。"
+      render :show
+    end
   end
   
   private 

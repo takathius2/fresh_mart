@@ -86,11 +86,19 @@
               <li class="nav-item btn btn-sm">
                 <%= button_to "ログイン", new_customer_session_path, method: :get %>
               </li>
+              <li class="nav-item btn btn-sm">
+                <%= button_to "管理者画面", new_admin_session_path, method: :get %>
+              </li>
             <% end %>
           </ul>
         </div>
       </nav>
     </header>
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>">
+          <%= msg.html_safe %>
+        </div>
+      <% end %>
     <%= yield %>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

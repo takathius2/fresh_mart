@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  # belongs_to :customer
+   belongs_to :customer
   #  belongs_to :order
 
   # 宛先氏名・郵便番号・住所の記入漏れチェック

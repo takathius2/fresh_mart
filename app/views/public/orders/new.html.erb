@@ -21,7 +21,7 @@
      
        
     <h2>お届け先</h2>
-    <%= form_with model: @order_destination: do |f| %>
+    <%= form_with model: @order do |f| %>
     <!--自分の住所を選択-->
         <%= f.radio_button :delivery_method, Order.delivery_methods.key(0) %>
             <%= f.label :delivery_method, Order.delivery_methods_i18n[:my_address] %><br>

@@ -1,6 +1,7 @@
 <h1>商品一覧</h1>
 
-<div><%= link_to "+", new_admin_item_path %></div>
+
+<div><%= link_to "商品の追加", new_admin_item_path %></div>
 <% @items.each do |item| %>
     <div>
         <%= link_to admin_item_path(item.id) do %>

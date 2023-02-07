@@ -29,7 +29,6 @@
             [g.genre_name, g.id]},class: "form-control" %><br>
         
     <label for="inputNo_tax_item_price">価格（税抜）</label>
-        <%= f.text_field :no_tax_item_price, autofocus: true, id:"inputOn_tax_item_price", palceholder:"商品説明" %><br>
-    
+        <%= f.text_field :no_tax_item_price, autofocus: true, id: "inputOn_tax_item_price", palceholder: "0以上の数値を入力" %><br>
     <%= f.submit "変更を保存", class: 'btn btn-success btn-md' %>
 <% end %>

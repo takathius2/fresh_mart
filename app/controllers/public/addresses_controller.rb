@@ -1,6 +1,6 @@
 class Public::AddressesController < ApplicationController
   def index
-    @addresses = Address.all
+    @addresses = current_customer.addresses
   end
 
   def new
@@ -11,8 +11,11 @@ class Public::AddressesController < ApplicationController
     @address = Address.find(params[:id])
   end
 
-  def create
+  def create 
     @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
+    #  @address.customer_id = current_customer.id.where(customer: telephone_number)
+    # ↑のように条件を付け加えることもできる
     if @address.save
       flash[:notice] = "配送先が新規作成されました。"
       redirect_to public_addresses_path

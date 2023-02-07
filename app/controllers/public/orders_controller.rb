@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
 
   def new # 注文情報・支払方法入力画面
     @order = Order.new
-    @order_destination_attributes
+    @order.build_order_destination
   end
 
   def comfirm # 注文情報確認画面HTTPメソッド:POST
