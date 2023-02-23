@@ -7,6 +7,10 @@ class Order < ApplicationRecord
     
     validates :payment_method, presence: true
     validates :delivery_method, presence: true
+    # validates :delivery_name, presence: true
+    # validates :delivery_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力してください。' }
+    # validates :delivery_code, presence: true, format: { with: /\A\d{7}\z/, message: 'は半角数字で入力してください。' }
+    # validates :delivery_address, presence: true
    
     
     has_one_attached :item_image

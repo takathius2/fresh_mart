@@ -50,9 +50,6 @@ class Public::OrdersController < ApplicationController
       @order.delivery_name_kana = params[:order][:delivery_name_kana]
       @order.delivery_code = params[:order][:delivery_code]
       @order.delivery_address = params[:order][:delivery_address]
-
-      # else
-      # render :new
     end
 
     @customer = current_customer
@@ -68,7 +65,7 @@ class Public::OrdersController < ApplicationController
     @total = 0
     @order.cost_price = 800
     @order.customer = current_customer
-    if @order.save!
+    if @order.save
       render :comfirm
     else
       render :new

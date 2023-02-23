@@ -2,6 +2,7 @@
 
 <div class="customer_information_edit" >
     <%= form_with model: @customer, url: public_customers_infomation_update_path, method: :patch do |f| %>
+        <%= render "public/shared/error_messages", resource: @customer %>
         <table>
             <tr>
                <th>氏名</th>

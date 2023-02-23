@@ -1,6 +1,8 @@
 ja:
   activerecord:
     attributes:
+      order:
+        delivery_name_kana: 配送先のフリガナ
       customer:
         email: メールアドレス
         first_name: 姓

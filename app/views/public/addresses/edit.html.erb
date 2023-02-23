@@ -1,9 +1,6 @@
-<!--<p>配送先編集画面<br>-->
-<!--※1.登録済み住所の編集機能は現在実装を見送っています<br>-->
-<!--※2.お客様自身の住所は　マイページの登録情報編集＞<%#= link_to  "アカウントの情報編集", public_customers_infomation_edit_path %><br>-->
-<!--から編集可能です</p>-->
 <h1>配送先の編集</h1>
 <%= form_with model: @address, url: public_address_path(@address.id), method: :patch do |f| %>
+    <%= render "public/shared/error_messages", resource: @address %>
     <table>
             <tr>
                 <th>宛名</th>

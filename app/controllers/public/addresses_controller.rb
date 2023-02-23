@@ -27,11 +27,11 @@ class Public::AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    if @address.update!(address_params)
-      flash[:notice] = "配送先の情報を更新しました。"
+    if @address.update(address_params)
+      # flash[:notice] = "配送先の情報を更新しました。"
       redirect_to public_addresses_path
     else
-      flash[:alart] = "情報の更新に失敗しました。"
+      # flash[:alart] = "情報の更新に失敗しました。"
       render :edit
     end
   end
