@@ -13,9 +13,8 @@ default: &default
 
 development:
   <<: *default
-  adapter: mysql2
-  username: root
-  password:
+  username: rolename
+  password: password
   host: localhost
   database: ajax_app_development
 
@@ -51,7 +50,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  adapter: mysql2
   username: root
   password:
   host: localhost
@@ -78,5 +76,4 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
   url: <%= ENV['DATABASE_URL'] %>

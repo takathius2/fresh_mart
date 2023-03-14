@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2023_01_23_124544) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 2023_01_23_124544) do
     t.string "postal_telephone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.index ["customer_id"], name: "index_addresses_on_customer_id"
   end
 
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 2023_01_23_124544) do
     t.string "name"
     t.string "name_kana"
     t.string "telephone_number"
-    t.integer "order_id", null: false
+    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_destinations_on_order_id"

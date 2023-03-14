@@ -77,14 +77,10 @@ gem 'rmagick'
 gem 'sass'
 
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+
 
 gem 'net-smtp'
 gem 'net-pop'
 gem 'net-imap'
 
-group :production do
-  gem 'pg'
-end
+gem 'pg', '~> 1.1'
