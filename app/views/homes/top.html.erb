@@ -3,19 +3,19 @@
     <h4>新着商品</h4>
     <div class="row">
         <div class="col-4">
-        <!--<#% @item.each do |item| %>-->
-        <!--    <#%= link_to public_item_path(item.id) do %>-->
-        <!--        <#%= image_tag item.get_item_image(200,150) %>-->
-        <!--    <#% end %>-->
-        <!--    <table>-->
-        <!--        <tr>-->
-        <!--            <th>商品名</th><td><%#= item.item_name %></td>-->
-        <!--        </tr>-->
-        <!--        <tr>-->
-        <!--            <th>税抜価格</th><td><strong><%#= item.no_tax_item_price %></strong>円 (税込<%#= item.with_tax_price %>円）</td>-->
-        <!--        </tr>-->
-        <!--    </table>-->
-        <!--<#% end %>-->
+        <% @item.each do |item| %>
+            <%= link_to public_item_path(item.id) do %>
+                <%= image_tag item.get_item_image(200,150) %>
+            <% end %>
+            <table>
+                <tr>
+                    <th>商品名</th><td><%= item.item_name %></td>
+                </tr>
+                <tr>
+                    <th>税抜価格</th><td><strong><%= item.no_tax_item_price %></strong>円 (税込<%= item.with_tax_price %>円）</td>
+                </tr>
+            </table>
+        <% end %>
         </div>
     </div>
 </div>
