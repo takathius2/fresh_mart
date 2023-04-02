@@ -30,10 +30,10 @@ https://docs.google.com/spreadsheets/d/1REfH5yZcNJg7iJOGpbvfAjeYRojwEhY8PeoKLyhO
 
 ## 開発環境
 - OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby3.1.2,SQL
+- 言語：HTML,CSS,JavaScript,Ruby3.1.2,SQL,PostgresQL
 - フレームワーク：Ruby on Rails6.1.7
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Cloud9,Render(デプロイで使用)
 
 ## 使用素材
 - ヘッダー画像：ぱくたそ
